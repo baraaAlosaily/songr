@@ -1,0 +1,15 @@
+div{
+grid-template-columns: 1fr 1fr 1fr;
+width:300px;
+background-color: #f1f1f1;
+gap:100px;
+}
+h1{
+text-align:center;
+}
+.new{
+display:grid;
+grid-template-columns:minmax(300px,3fr)
+gap:100px;
+
+}
