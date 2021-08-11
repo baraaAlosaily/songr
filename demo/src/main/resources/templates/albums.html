@@ -18,20 +18,10 @@ color:red;
     </style>
 </head>
 <body>
+
 <h1>Albums</h1>
-<div class="new">
-<div th:each="album : ${albums}" style="border: 2px solid red;
-border-radius:5px;" >
-    <p>Title : <span th:text="${album.title}"></span></span></p>
-    <p>Artist : <span th:text="${album.artist}"></span></span></p>
-    <p>SongCount : <span th:text="${album.songCount}"></span> song</p>
-    <p>Length : <span th:text="${album.length}"></span> seconds</p>
-    <p>ImageUrl : <img th:src="${album.imageUrl}"></p>
-    <br>
-</div>
-</div>
 <br>
-<form action="#" th:action="@{/addAlbums}" method="post" th:object="${addAlbums}">
+<form action="#" th:action="@{/addAlbums}" method="POST" th:object="${addAlbums}">
     <label>Album Title:</label>
     <input type="text" name="title" field="*{title}" required/>
     <label>Artist:</label>
@@ -44,5 +34,18 @@ border-radius:5px;" >
     <input type="url" name="imageUrl" field="*{imageUrl}" required />
     <input type="submit" value="Submit"/>
 </form>
+<div class="new">
+<div th:each="album : ${albums}" style="border: 2px solid red;
+border-radius:5px;" >
+    <p>Title : <span th:text="${album.title}"></span></span></p>
+    <p>Artist : <span th:text="${album.artist}"></span></span></p>
+    <p>SongCount : <span th:text="${album.songCount}"></span> song</p>
+    <p>Length : <span th:text="${album.length}"></span> seconds</p>
+    <p>ImageUrl : <img th:src="${album.imageUrl}"></p>
+    <br>
+</div>
+</div>
+<br>
+
 </body>
 </html>

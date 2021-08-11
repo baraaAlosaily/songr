@@ -1,10 +1,11 @@
-package com.example.demo.AlbumPackage;
+package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.view.RedirectView;
@@ -21,6 +22,14 @@ public class AlbumController {
         model.addAttribute("albums", albumRepository.findAll());
         return "albums.html";
     }
+//
+//    @GetMapping("/albums/{id}")
+//    public void getAuthorById(@PathVariable(value = "id") Integer id, Model m){
+//        Album album=albumRepository.findById(id).get();
+//        m.addAttribute("album",album);
+//
+//    }
+
     @PostMapping("/addAlbums")
     public RedirectView addAlbum(@RequestBody MultiValueMap <String, String> createData){
         Album album=new Album(createData.get("title").get(0),createData.get("artist").get(0),createData.get("songCount").get(0),createData.get("length").get(0),createData.get("imageUrl").get(0));

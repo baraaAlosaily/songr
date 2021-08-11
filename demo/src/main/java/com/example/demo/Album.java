@@ -1,7 +1,9 @@
- package com.example.demo.AlbumPackage;
+ package com.example.demo;
 
 import javax.persistence.*;
-@Entity
+import java.util.List;
+
+ @Entity
 public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +13,9 @@ public class Album {
     private String songCount;
     private String length;
     private String imageUrl;
+
+    @OneToMany(mappedBy = "album")
+    private List<Song> songs;
 
     public Album() {
 
@@ -71,4 +76,12 @@ public class Album {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-}
+
+     public List<Song> getSongs() {
+         return songs;
+     }
+
+     public void setSongs(List<Song> songs) {
+         this.songs = songs;
+     }
+ }
